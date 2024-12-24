@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", serif;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+  background: #34495e;
+  overflow: hidden;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  font-family: "Kaushan Script", serif;
+  font-size: 4.2rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.countdown-container {
+  padding: 2rem;
+}
+
+.countdown {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  z-index: 5;
+  -webkit-box-reflect: below 1rem linear-gradient(#000000, transparent);
+}
+
+.time-box {
+  background: var(--clr);
+  text-align: center;
+}
+
+.time-box span {
+  color: #ffffff;
+  font-size: 3.2rem;
+  font-weight: 700;
+  min-height: 8rem;
+  line-height: 8rem;
+  min-width: 10rem;
+  display: block;
+  padding: 0 1rem;
+}
+
+.time-box p {
+  font-weight: 600;
+  background: #ffffff1a;
+  color: #ffffff;
+  border-top: 0.1rem solid #ffffff4d;
+  backdrop-filter: blur(1rem);
+  padding: 0.5rem 1rem;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 3.6rem;
+  }
+}

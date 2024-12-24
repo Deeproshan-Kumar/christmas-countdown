@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Christmas Countdown</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="countdown-container">
+        <h1>Countdown to Christmas</h1>
+        <div class="countdown" id="countdown">
+          <div class="time-box" style="--clr: #1abc9c">
+            <span id="days"></span>
+            <p>Days</p>
+          </div>
+          <div class="time-box" style="--clr: #e74c3c">
+            <span id="hours"></span>
+            <p>Hours</p>
+          </div>
+          <div class="time-box" style="--clr: #0984e3">
+            <span id="minutes"></span>
+            <p>Minutes</p>
+          </div>
+          <div class="time-box" style="--clr: #e84393">
+            <span id="seconds"></span>
+            <p>Seconds</p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      const christmasCountDown = () => {
+        const today = new Date();
+        let christmas = new Date(today.getFullYear(), 11, 25);
+
+        if (today > christmas) {
+          christmas.setFullYear(today.getFullYear() + 1);
+        }
+
+        const timeDiff = christmas - today;
+
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        document.querySelector("#days").textContent = days;
+        document.querySelector("#hours").textContent = hours;
+        document.querySelector("#minutes").textContent = minutes;
+        document.querySelector("#seconds").textContent = seconds;
+      };
+
+      setInterval(christmasCountDown, 1000);
+
+      const generateStars = (numStars) => {
+        const existingStars = document.querySelectorAll(".star");
+        existingStars.forEach((star) => star.remove());
+
+        for (let i = 0; i < numStars; i++) {
+          const star = document.createElement("span");
+          const size = Math.random() * 2 + 1;
+          const opacity = Math.random() * 0.7 + 0.3;
+          const x = Math.floor(Math.random() * window.innerWidth);
+          const y = Math.floor(Math.random() * window.innerHeight);
+          console.log(size, opacity, x, y);
+          star.classList.add("star");
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+          star.style.top = `${y}px`;
+          star.style.left = `${x}px`;
+          star.style.opacity = opacity.toFixed(1);
+
+          document.body.appendChild(star);
+        }
+      };
+
+      generateStars(500);
+    </script>
+  </body>
+</html>
